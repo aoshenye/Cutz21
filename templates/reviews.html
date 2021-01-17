@@ -1,7 +1,6 @@
-{% extends "base.html" %}
+{% extends"base.html" %}
 {% block content %}
 
-    <h2>Reviews of all our featured barbers</h2>
 
     {% for task in tasks %}
         {{ task.task_name }}<br>
@@ -10,5 +9,5 @@
         {{ task.is_urgent }}<br>
         {{ task.due_date }}<br>
     {% endfor %}
-  
+
 {% endblock %}
