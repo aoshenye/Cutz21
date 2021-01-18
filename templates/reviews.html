@@ -2,12 +2,12 @@
 {% block content %}
 
 
-    {% for task in tasks %}
-        {{ task.task_name }}<br>
-        {{ task.category_name }}<br>
-        {{ task.task_description }}<br>
-        {{ task.is_urgent }}<br>
-        {{ task.due_date }}<br>
+    {% for review in reviews %}
+        {{ review.review_name }}<br>
+        {{ review.category_name }}<br>
+        {{ review.review_description }}<br>
+        {{ review.is_urgent }}<br>
+        {{ review.due_date }}<br>
     {% endfor %}
 
 {% endblock %}
