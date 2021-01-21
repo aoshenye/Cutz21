@@ -1,27 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
-<h3 class="center-align">Register</h3>
+<h3 class="center-align">Log In</h3>
 <div class="row">
 <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
-   <p>Register a username to log in and leave a review of any of the featured Barbers here. Thanks</p>
+   <p>Leave your name and your review of any of the below Barbers please. Thanks</p>
    <input id="username" type="text" name="username" class="validate">
           <label for="name">Name</label>
    <input id="password" type="password" password="password" class="validate" name="password">
           <label for="password">Password</label>
    <textarea rows="4" cols="50" name="comment">
    Enter text here...</textarea>
-   <button type="submit" style="align-items: center;">Register</button>
+   <button type="submit" style="align-items: center;">Log in here</button>
 </form>
 </div>
 
 <div class="row">
     <div class="col s12">
-        <p class="center-align"><a href="" class="class">Have you registered as a user?
-        <a href="{{ url_for('register') }}" class="href">Log in here</a>    
+        <p class="center-align"><a href="" class="class">If you have not yet registered to our page, please do so here and you can read and write new reviews of our barbers.
+        <a href="{{ url_for('register') }}" class="href">Register here</a>    
         </a></p>
             
     </div>
-   <!-- register -->
+
+</div>
+   <!-- Featured Barbers -->
   
       <div class="row">
          <div class="col s12 m7">
