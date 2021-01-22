@@ -2,7 +2,7 @@
 {% block content %}
 <h3 class="center-align">Log In</h3>
 <div class="row">
-<form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+<form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
    <p>Leave your name and your review of any of the below Barbers please. Thanks</p>
    <input id="username" type="text" name="username" class="validate">
           <label for="name">Name</label>
@@ -16,8 +16,7 @@
 
 <div class="row">
     <div class="col s12">
-        <p class="center-align"><a href="" class="class">If you have not yet registered to our page, please do so here and you can read and write new reviews of our barbers.
-        <a href="{{ url_for('register') }}" class="href">Register here</a>    
+        <p class="center-align"><a href="" class="class"><a href="{{ url_for('register') }}">If you have not yet registered to our page, please do so here and you can read and write new reviews of our barbers.Register</a> 
         </a></p>
             
     </div>
