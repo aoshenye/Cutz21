@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+
 <h3 class="center-align">Log In</h3>
+
 <div class="row">
 <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
    <p>Leave your name and your review of any of the below Barbers please. Thanks</p>
-    <label for="name">Name</label>
+    <label for="name">Username</label>
    <input id="username" type="text" name="username" class="validate">     
     <label for="password">Password</label>
           <input id="password" type="password" password="password" class="validate" name="password">

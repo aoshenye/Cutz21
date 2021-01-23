@@ -1,13 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-<h3 class="center-align">Welcome Back {{ username }}</h3>
-<div class="row">
-<form class="col s12 m8 offset-m2">
-   <p>Leave your review below of any of our Barbers you may have seen recently. Thanks</p>
-   <textarea rows="4" cols="50" name="comment">Enter text here...</textarea>
-</form>
-</div>
 
+
+<div id="respond">
+
+    <ul class="collapsible">
+<h3 class="center-align">Leave a Review here</h3>
+
+        {{ username }}'s Profile
+
+  <form action="post_comment.php" method="post" id="commentform">
+
+    <label for="email" class="required">Your username;</label>
+    <input id="username" type="text" name="username" class="validate">  
+
+    <label for="comment" class="required">Your message</label>
+    <textarea name="comment" id="comment" rows="10" tabindex="4"  required="required"></textarea>
+
+    <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
+    <input name="submit" type="submit" value="Submit comment" />
+
+  </form>
             
    
 

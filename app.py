@@ -18,10 +18,12 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+# list variable is reviews
+
 @app.route("/")
 @app.route("/get_reviews")
 def get_reviews():
-    reviews = mongo.db.Reviews.find()
+    reviews = list(mongo.db.Reviews.find())
     return render_template("reviews.html", reviews=reviews)
 
 

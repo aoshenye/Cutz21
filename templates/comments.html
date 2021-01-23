@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% for comm in comments %}
+    {% for review in reviews %}
         {{ comm.barber_name }}<br>
         {{ comm.Comment_x }}<br>
         {{ comm.date_ofcut }}<br>
@@ -10,6 +10,20 @@
 <div id="respond">
 
   <h3>Leave a Review here</h3>
+    <ul class="collapsible">
+        {% for comm in comments %}
+        <li>
+            <div class="collapsible-header white-text light-blue darken-4 text-shadow">
+                <i class="fas fa-caret-down"></i>
+                <strong>{{ comm.barber_name }}</strong> : {{ comm.date_ofcut }}
+                {% if task.is_urgent == "on" %}
+                    <i class="fas fa-exclamation-circle light-blue-text text-lighten-2 tooltipped"
+                        data-position="right" data-tooltip="URGENT!"></i>
+                {% endif %}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
 
   <form action="post_comment.php" method="post" id="commentform">
 

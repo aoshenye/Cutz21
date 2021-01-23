@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
+
 <h3 class="center-align">Register</h3>
+
 <div class="row">
 <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
    <p>Register a username to log in and leave a review of any of the featured Barbers here. Thanks</p>
-        <label for="name">Name</label>
+        <label for="name">Username</label>
    <input id="username" type="text" name="username" class="validate">
           <label for="password">Password</label>
    <input id="password" type="password" password="password" class="validate" name="password">
