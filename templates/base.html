@@ -15,13 +15,14 @@
    
   <nav>
     <div class="nav-wrapper" style="background-color: teal;">
-      <a href="{{ url_for('get_home') }}" class="brand-logo center" style="border-color: black;">Cutz</a>
       <ul class="left hide-on-med-and-down">
     {% if session.user %}
         <li><a href="{{ url_for('get_home') }}">Home</a></li>
         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
         <li><a href="{{ url_for('logout') }}">Log Out</a></li>   
        <li><a href="{{ url_for('get_reviews') }}">Comments</a></li>
+       <li><a href="{{ url_for('add_comment') }}">Your review</a></li>
+
 
 
     {% else %}    
