@@ -11,8 +11,17 @@
 
   <form action="post_comment.php" method="post" id="commentform">
 
+    <label for="barber_name" class="required">Barber name</label>
+    <textarea name="comment" id="comment" rows="10" tabindex="4"  required="required"></textarea>
+
     <label for="comment" class="required">Your Reviews</label>
     <textarea name="comment" id="comment" rows="10" tabindex="4"  required="required"></textarea>
+
+    <label for="start">Start date:</label>
+
+<input type="date" id="start" name="trip-start"
+       value="2018-07-22"
+       min="2018-01-01" max="2018-12-31">
 
     <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
     <input name="submit" type="submit" value="Submit" />
