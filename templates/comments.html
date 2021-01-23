@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% for review in reviews %}
+        {{ comm.barber_name }}<br>
+        {{ comm.Comment_x }}<br>
+        {{ comm.date_ofcut }}<br>
+    {% endfor %}
+
+    <ul class="collapsible">
+        {% for reviews in reviews %}
+        <li>
+            <div class="collapsible-header white-text light-blue darken-4 text-shadow">
+                <i class="fas fa-caret-down"></i>
+                <strong>{{ reviews.reviews_name }}</strong> : {{ reviews.due_date }}
+                {% if reviews.is_urgent == "on" %}
+                    <i class="fas fa-exclamation-circle light-blue-text text-lighten-2 tooltipped"
+                        data-position="right" data-tooltip="URGENT!"></i>
+                {% endif %}
+            </div>
+            <div class="collapsible-body">
+                <strong>{{ reviews.category_name }}</strong>
+                <p>{{ reviews.reviews_description }}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

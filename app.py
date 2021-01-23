@@ -19,12 +19,12 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 # list variable is reviews
-
 @app.route("/")
-@app.route("/get_reviews")
-def get_reviews():
-    reviews = list(mongo.db.Reviews.find())
+@app.route("/get_home")
+def get_home():
+    reviews = list(mongo.db.reviews.find())
     return render_template("reviews.html", reviews=reviews)
+
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -88,7 +88,7 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
-    if session["user"]:    
+    if session["user"]:
         return render_template("profile.html", username=username)
 
     return redirect(url_for("login"))
