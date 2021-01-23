@@ -26,6 +26,11 @@ def get_home():
     return render_template("reviews.html", reviews=reviews)
 
 
+@app.route("/get_reviews")
+def get_reviews():
+    reviews = list(mongo.db.reviews.find())
+    return render_template("comments.html", reviews=reviews)
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():

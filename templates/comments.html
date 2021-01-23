@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% for review in reviews %}
-        {{ comm.barber_name }}<br>
-        {{ comm.Comment_x }}<br>
-        {{ comm.date_ofcut }}<br>
+    {% for reviews in reviews %}
+        {{ reviews.barber_name }}<br>
+        {{ reviews.Comment_x }}<br>
+        {{ reviews.date_ofcut }}<br>
     {% endfor %}
 
     <ul class="collapsible">

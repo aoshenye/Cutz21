@@ -21,6 +21,8 @@
         <li><a href="{{ url_for('get_home') }}">Home</a></li>
         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
         <li><a href="{{ url_for('logout') }}">Log Out</a></li>   
+       <li><a href="{{ url_for('get_reviews') }}">Comments</a></li>
+
 
     {% else %}    
         <li><a href="{{ url_for('login') }}">Login</a></li>
