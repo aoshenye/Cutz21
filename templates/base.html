@@ -12,10 +12,10 @@
     <title>Review manager</title>
 </head>
 <body>
-   <header>
+   
   <nav>
     <div class="nav-wrapper" style="background-color: teal;">
-      <a href="#!" class="brand-logo center" style="border-color: black;">Cutz</a>
+      <a href="{{ url_for('get_reviews') }}" class="brand-logo center" style="border-color: black;">Cutz</a>
       <ul class="left hide-on-med-and-down">
     {% if session.user %}
         <li><a href="{{ url_for('get_reviews') }}">Home</a></li>
@@ -30,9 +30,9 @@
     </div>
   </nav>
     
-   </header>
+  
 </body>
-    
+
 
 
     

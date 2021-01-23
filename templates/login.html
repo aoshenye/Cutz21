@@ -4,13 +4,11 @@
 <div class="row">
 <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
    <p>Leave your name and your review of any of the below Barbers please. Thanks</p>
-   <input id="username" type="text" name="username" class="validate">
-          <label for="name">Name</label>
-   <input id="password" type="password" password="password" class="validate" name="password">
-          <label for="password">Password</label>
-   <textarea rows="4" cols="50" name="comment">
-   Enter text here...</textarea>
-   <button type="submit" style="align-items: center;">Log in here</button>
+    <label for="name">Name</label>
+   <input id="username" type="text" name="username" class="validate">     
+    <label for="password">Password</label>
+          <input id="password" type="password" password="password" class="validate" name="password">
+   <button type="submit" style="align-items: center;">Enter</button>
 </form>
 </div>
 
@@ -22,6 +20,7 @@
     </div>
 
 </div>
-   
+
 
 {% endblock %}
+

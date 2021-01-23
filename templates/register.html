@@ -4,12 +4,10 @@
 <div class="row">
 <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
    <p>Register a username to log in and leave a review of any of the featured Barbers here. Thanks</p>
+        <label for="name">Name</label>
    <input id="username" type="text" name="username" class="validate">
-          <label for="name">Name</label>
-   <input id="password" type="password" password="password" class="validate" name="password">
           <label for="password">Password</label>
-   <textarea rows="4" cols="50" name="comment">
-   Enter text here...</textarea>
+   <input id="password" type="password" password="password" class="validate" name="password">
    <button type="submit" style="align-items: center;">Register</button>
 </form>
 </div>
@@ -21,7 +19,5 @@
             
     </div>
    <!-- register -->
-  
-     
 
 {% endblock %}
