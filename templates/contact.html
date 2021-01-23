@@ -1,45 +1,52 @@
-{% extends "base.html" %}
+{% extends 'layout.html' %}
+
+
 {% block content %}
 
-    {% for review in reviews %}
-        {{ comm.barber_name }}<br>
-        {{ comm.Comment_x }}<br>
-        {{ comm.date_ofcut }}<br>
-    {% endfor %}
+  <div class="form-wrapper">
+    <h2 class="title">Contact</h2>
 
-<div id="respond">
+    <form method="POST" action="{{ url_for('signup') }}">
 
-  <h3>Leave a Review here</h3>
-    <ul class="collapsible">
-        {% for comm in comments %}
-        <li>
-            <div class="collapsible-header white-text light-blue darken-4 text-shadow">
-                <i class="fas fa-caret-down"></i>
-                <strong>{{ comm.barber_name }}</strong> : {{ comm.date_ofcut }}
-                {% if task.is_urgent == "on" %}
-                    <i class="fas fa-exclamation-circle light-blue-text text-lighten-2 tooltipped"
-                        data-position="right" data-tooltip="URGENT!"></i>
-                {% endif %}
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
+      <fieldset class="form-field">
+      {{ form.name.label }}
+      {{ form.name }}
+        {% if form.name.errors %}
+        <ul class="errors">
+          {% for error in form.name.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </fieldset>
 
-  <form action="post_comment.php" method="post" id="commentform">
+      <fieldset class="form-field">
+        {{ form.email.label }}
+        {{ form.email }}
+        {% if form.email.errors %}
+          <ul class="errors">
+            {% for error in form.email.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
 
-    <label for="email" class="required">Your username;</label>
-    <input type="email" name="email" id="email" value="" tabindex="2" required="required">
+      <fieldset class="form-field">
+        {{ form.body.label }}
+        {{ form.body }}
+        {% if form.body.errors %}
+          <ul class="errors">
+            {% for error in form.body.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </fieldset>
 
-    <label for="comment" class="required">Your message</label>
-    <textarea name="comment" id="comment" rows="10" tabindex="4"  required="required"></textarea>
+      {{ form.submit }}
 
-    <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
-    <input name="submit" type="submit" value="Submit comment" />
-
-  </form>
-
-</div>
-
-   
+      </form>
+  </div>
 
 {% endblock %}
