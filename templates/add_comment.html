@@ -3,21 +3,21 @@
 
     <h3 class="light-blue-text text-darken-4 center-align">Add your review</h3>
 
-    <div class="row">
-        <form class="col s12" method="POST" action="">
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-user-circle prefix light-blue-text text-darken-4"></i>
-                    <input id="icon_prefix" type="text" class="validate">
-                    <label for="icon_prefix">First Name</label>
-                </div>
-                <div class="input-field col s12">
-                    <i class="fas fa-phone prefix light-blue-text text-darken-4"></i>
-                    <input id="icon_telephone" type="tel" class="validate">
-                    <label for="icon_telephone">Telephone</label>
-                </div>
-            </div>
-        </form>
-    </div>
+    <form class="col s12" method="POST" action=""></form>
+    <label for="barber_name" class="required">Barber name</label>
+    <textarea name="barber_name" id="barber_name" rows="10" tabindex="4"  required="required"></textarea>
 
+    <label for="comment_x" class="required">Your Reviews</label>
+    <textarea name="comment_x" id="comment_x" rows="10" tabindex="4"  required="required"></textarea>
+
+    <label for="date_ofcut">Date:</label>
+
+<input type="date" id="date_ofcut" name="date_ofcut"
+       value="2020-01-22"
+       min="2019-01-01" max="2060-12-31">
+
+    <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
+    <input name="submit" type="submit" value="Submit" />
+
+  </form>
 {% endblock %}

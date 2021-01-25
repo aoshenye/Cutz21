@@ -22,14 +22,14 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_home")
 def get_home():
-    reviews = list(mongo.db.reviews.find())
-    return render_template("reviews.html", reviews=reviews)
+    categories = list(mongo.db.categories.find())
+    return render_template("reviews.html", categories=categories)
 
 
 @app.route("/get_reviews")
 def get_reviews():
-    reviews = list(mongo.db.reviews.find())
-    return render_template("comments.html", reviews=reviews)
+    categories = list(mongo.db.categories.find())
+    return render_template("comments.html", categories=categories)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -109,6 +109,20 @@ def logout():
 
 @app.route("/add_comment")
 def add_comment():
+    if request.method == "POST":
+        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        review = {
+            "category_name": request.form.get("category_name"),
+            "barber_name": request.form.get("barber_name"),
+            "comment_x": request.form.get("comment_x"),
+            "date_ofcut": request.form.get("date_ofcut"),
+            "created_by": session["user"]
+        }
+        mongo.db.tasks.insert_one(review)
+        flash("Review Successfully Added")
+        return redirect(url_for("get_reviews"))
+
+    categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_comment.html")
 
 
