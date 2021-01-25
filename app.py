@@ -26,6 +26,12 @@ def get_home():
     return render_template("reviews.html", categories=categories)
 
 
+@app.route("/add_comment")
+def add_comment():
+    categories = list(mongo.db.reviews.find())
+    return render_template("add_comment.html", categories=categories)
+
+
 @app.route("/get_reviews")
 def get_reviews():
     categories = list(mongo.db.categories.find())
@@ -106,24 +112,6 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
-# comment form
-@app.route("/add_comment.html", methods=["GET", "POST"])
-def add_comment():
-    """Standard `contact` form."""
-    form = ObjectId()
-    if form.validate_on_submit():
-        return redirect(url_for("index.html"))
-    return render_template(
-        "profile.html",
-        form=form,
-        template="form-template"
-    )
-    mongo.db.tasks.insert_one(review)
-    flash("Review Successfully Added")
-    return redirect(url_for(""))
-
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("profile.html")
 
 
 if __name__ == "__main__":
