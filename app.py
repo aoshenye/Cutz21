@@ -106,24 +106,24 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
-
-@app.route("/add_comment")
+# comment form
+@app.route("/add_comment.html", methods=["GET", "POST"])
 def add_comment():
-    if request.method == "POST":
-        is_urgent = "on" if request.form.get("is_urgent") else "off"
-        review = {
-            "category_name": request.form.get("category_name"),
-            "barber_name": request.form.get("barber_name"),
-            "comment_x": request.form.get("comment_x"),
-            "date_ofcut": request.form.get("date_ofcut"),
-            "created_by": session["user"]
-        }
-        mongo.db.tasks.insert_one(review)
-        flash("Review Successfully Added")
-        return redirect(url_for("get_reviews"))
+    """Standard `contact` form."""
+    form = ObjectId()
+    if form.validate_on_submit():
+        return redirect(url_for("index.html"))
+    return render_template(
+        "profile.html",
+        form=form,
+        template="form-template"
+    )
+    mongo.db.tasks.insert_one(review)
+    flash("Review Successfully Added")
+    return redirect(url_for(""))
 
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_comment.html")
+    return render_template("profile.html")
 
 
 if __name__ == "__main__":
