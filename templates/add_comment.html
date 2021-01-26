@@ -3,7 +3,7 @@
 
     <h3 class="light-blue-text text-darken-4 center-align">Add your review</h3>
 
-    <form class="col s12" method="POST" action=""></form>
+    <form class="col s12" method="POST" action="{{ url_for('add_comment') }}">
     <label for="barber_name" class="required">Barber name</label>
     <textarea name="barber_name" id="barber_name" rows="10" tabindex="4"  required="required"></textarea>
 

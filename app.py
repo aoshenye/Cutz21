@@ -23,19 +23,28 @@ mongo = PyMongo(app)
 @app.route("/get_home")
 def get_home():
     categories = list(mongo.db.categories.find())
-    return render_template("reviews.html", categories=categories)
+    reviews = get_reviews()
+    return render_template("reviews.html", categories=categories, reviews=reviews)
 
-
-@app.route("/add_comment")
+# to post submission of text in form(reviews once submitted)
+@app.route("/add_comment", methods = ["GET", "POST"])
 def add_comment():
-    categories = list(mongo.db.reviews.find())
+    if request.method == "POST":
+        review = {
+            "category_name": request.form.get("category_name"),
+            "barber_name": request.form.get("task_name"),
+            "comment_x": request.form.get("comment_x"),
+            "created_by": session["user"]
+            }
+        mongo.db.reviews.insert_one(request.form.to_dict())
+    categories = list(mongo.db.categories.find())
     return render_template("add_comment.html", categories=categories)
 
 
 @app.route("/get_reviews")
 def get_reviews():
     categories = list(mongo.db.categories.find())
-    return render_template("comments.html", categories=categories)
+
 
 
 @app.route("/register", methods=["GET", "POST"])
