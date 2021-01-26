@@ -1,24 +1,24 @@
-<!-- {% extends "base.html" %}
+{% extends "base.html" %}
 {% block content %}
 
     <ul class="collapsible">
-        {% for categories in categories %}
+        {% for reviews in reviews %}
         <li>
             <div class="collapsible-header white-text teal text-shadow">
-                <strong>{{ categories.barber_name }}</strong> {{ categories.date_ofcut }}
-                {% if categories.category_name == "Shave" %}
-                   Ronaldo
-                {% elif categories.category_name == "Pattern" %}
-                    Ida
+                <strong>{{ reviews.barber_name }}</strong> {{ reviews.date_ofcut }}
+                {% if reviews.comment_post_id == "1" %}
+                   comment_x
+                {% elif reviews.comment_x == "" %}
+                    comment_x
                 {% endif %}
                     
             </div>
             <div class="collapsible-body">
-                <strong>{{ categories.category_name }}</strong>
-                <p>{{ categories.comment_x }}</p>
+                <strong>{{ reviews.barber_name }}</strong>
+                <p>{{ reviews.names }}</p>
             </div>
         </li>
         {% endfor %}
     </ul>
 
-{% endblock %} -->
+{% endblock %}

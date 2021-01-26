@@ -34,7 +34,7 @@ def add_comment():
             "category_name": request.form.get("category_name"),
             "barber_name": request.form.get("task_name"),
             "comment_x": request.form.get("comment_x"),
-            "created_by": session["user"]
+            "submit": session["user"]
             }
         mongo.db.reviews.insert_one(request.form.to_dict())
     categories = list(mongo.db.categories.find())
@@ -43,8 +43,8 @@ def add_comment():
 
 @app.route("/get_reviews")
 def get_reviews():
-    categories = list(mongo.db.categories.find())
-
+    reviews = list(mongo.db.categories.find())
+    return render_template("comments.html", reviews=reviews)
 
 
 @app.route("/register", methods=["GET", "POST"])
