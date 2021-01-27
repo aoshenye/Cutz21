@@ -36,9 +36,8 @@ def add_comment():
             "comment_x": request.form.get("comment_x"),
             "submit": session["user"]
             }
-        mongo.db.reviews.insert_one(request.form.to_dict())
-    categories = list(mongo.db.categories.find())
-    return render_template("add_comment.html", categories=categories)
+    new_record_id = mongo.db.reviews.insert_one(request.form.to_dict()).inserted_id
+    return render_template("add_comment.html")
 
 
 @app.route("/get_reviews")
