@@ -31,10 +31,9 @@ def get_home():
 def add_comment():
     if request.method == "POST":
         review = {
-            "category_name": request.form.get("category_name"),
+
             "barber_name": request.form.get("task_name"),
-            "comment_x": request.form.get("comment_x"),
-            "submit": session["user"]
+            "comment_x": request.form.get("comment_x")
             }
     new_record_id = mongo.db.reviews.insert_one(request.form.to_dict()).inserted_id
     return render_template("add_comment.html")
