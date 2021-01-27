@@ -42,7 +42,7 @@ def add_comment():
 
 @app.route("/get_reviews")
 def get_reviews():
-    reviews = list(mongo.db.categories.find())
+    reviews = list(mongo.db.reviews.find())
     return render_template("comments.html", reviews=reviews)
 
 
