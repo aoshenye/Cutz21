@@ -7,8 +7,7 @@ from bson.objectid import ObjectId
 
 
 class ContactForm(FlaskForm):
-@app.route("/add_comment.html", methods=["GET", "POST"])
-name = StringField(
+    name = StringField(
         'barber_name',
         [DataRequired()]
     )

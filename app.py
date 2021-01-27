@@ -18,25 +18,74 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-# list variable is reviews
+"""
+Design wise, improvement to the overall user experience and navigation
+    - Comments page can be public
+Display comments done by user on their profile
+    - They can press on edit/delete on any comment
+    - This will redirect them to an edit comment page
+Make sure that people who didn't write the comment cannot edit it as well (check the username of the comment and the user logged in, if logged in)
+Comments displayed can be nicer in terms of design
+You can also have an image (file/url) of the barber saved in the db
+Clean up the db
+Add proper function comments throughout and function documentation
+It would be beneficial if you used the contact form you have in forms.py and add an endpoint to handle a "dummy" send email.
+README file
+"""
+
+
+def is_logged_in():
+    return session.get('user')
+
+
 @app.route("/")
 @app.route("/get_home")
 def get_home():
+    """
+    List variable is reviews
+    """
     categories = list(mongo.db.categories.find())
     reviews = get_reviews()
     return render_template("reviews.html", categories=categories, reviews=reviews)
 
-# to post submission of text in form(reviews once submitted)
-@app.route("/add_comment", methods = ["GET", "POST"])
-def add_comment():
-    if request.method == "POST":
-        review = {
 
-            "barber_name": request.form.get("task_name"),
-            "comment_x": request.form.get("comment_x")
+@app.route("/")
+@app.route("/contact")
+def contact():
+    """
+    Accepts both GET and POST and implement with the ContactForm and it should just print out the message from the user.
+    print(request.form['message'])
+    """
+    categories = list(mongo.db.categories.find())
+    reviews = get_reviews()
+    return render_template("reviews.html", categories=categories, reviews=reviews)
+
+
+@app.route("/add_comment", methods=["GET", "POST"])
+def add_comment():
+    """ 
+    To post scomment of text in form(revicommentsubmitted)
+    """
+    if is_logged_in():
+        # user is logged in
+        if request.method == "POST":
+            # handle post
+            review_data = {
+                'barber_name': request.form['barber_name'],
+                'comment': request.form['comment'],
+                'date_of_cut': request.form['date_of_cut'],
+                'author': session['user'],
             }
-    new_record_id = mongo.db.reviews.insert_one(request.form.to_dict()).inserted_id
-    return render_template("add_comment.html")
+            print(review_data)
+            new_record_id = mongo.db.reviews.insert_one(review_data)
+            flash("Created comment successfully", "success")
+            return redirect(url_for("get_reviews"))
+
+        # get request
+        return render_template("add_comment.html")
+
+    flash("Register or log in", "warning")
+    return redirect(url_for("register"))
 
 
 @app.route("/get_reviews")
@@ -48,25 +97,24 @@ def get_reviews():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-            # check if username already exists in db
-            existing_user = mongo.db.users.find_one(
-                {"username": request.form.get("username").lower()})
+        # check if username already exists in db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
 
-            if existing_user:
-                flash("Username already exists")
-                return redirect(url_for("register"))
-    
-            register = {
-                "username": request.form.get("username").lower(),
-                "password": generate_password_hash(request.form.get("password"))
-            }
-            mongo.db.users.insert_one(register)
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("register"))
+
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(register)
 
         # put the new user into 'session' cookie
-            session["user"] = request.form.get("username").lower()
-            flash("Registration Successful!")
-            return redirect(url_for("profile", username=session["user"]))
-
+        session["user"] = request.form.get("username").lower()
+        flash("Registration Successful!")
+        return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html")
 
@@ -82,11 +130,11 @@ def login():
             # ensure hashed password matches user input
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                        session["user"] = request.form.get("username").lower()
-                        flash("Welcome, {}".format(
-                            request.form.get("username")))
-                        return redirect(url_for(
-                            "profile", username=session["user"]))
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(
+                    request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 # password invalid
                 flash("Incorrect Username and/or Password")
@@ -118,7 +166,6 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
-
 
 
 if __name__ == "__main__":

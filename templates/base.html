@@ -44,7 +44,7 @@
     </nav>
 
     <section id="messages-section">
-        <div class="">
+        <div class="container">
             <div class="row">
                 <div class="col">
                     <!-- Loop over flash messages and display them -->
@@ -52,7 +52,7 @@
                     {% if messages %}
                     <ul>
                         {% for category, message in messages %}
-                        <li class="alert alert-{{ category }}">{{ message }}</li>
+                        <li class="{{ category }}">{{ message }}</li>
                         {% endfor %}
                     </ul>
                     {% endif %}

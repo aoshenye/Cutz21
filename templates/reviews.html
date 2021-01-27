@@ -13,39 +13,30 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 
-  <nav>
-    <div class="nav-wrapper" style="background-color: teal;">
-      <a href="#!" class="brand-logo center">Cutz</a>
-      <ul class="left hide-on-med-and-down">
-       <li><a href="{{ url_for('get_home') }}">Home</a></li>
-        <li><a href="{{ url_for('login') }}">Login</a></li>
-        <li><a href="{{ url_for('register') }}">Register</a></li>
-        
-      </ul>
-    </div>
-  </nav>
-  <body>
-    <div class="row">
-    
 
-      <div class="col s1"><img class="card-img-top" src="static/images/baby.jpg" alt="" style="max-width: 170%;"></div>
-      <div class="col s1"><img class="card-img-top" src="static/images/smile.JPG" alt="" style="max-width: 170%;"></div>
-      <div class="col s1"><img class="card-img-top" src="static/images/sunme.jpg" alt="" style="max-width: 170%;"></div>
-      <div class="col s1"><img class="card-img-top" src="static/images/arn5.jpg" alt="" style="box-sizing: initial"></div>
-      <div class="col s1"><img class="card-img-top" src="static/images/nyas.jpg" alt="" style="max-width: 170%;"></div>
-      <div class="col s1"><img class="card-img-top" src="static/images/tim.png" alt="" style="max-width: 170%;"></div>
-      <div class="col s1"><img class="card-img-top" src="static/images/beard2.jpg" alt="" style="max-width: 170%;"></div>
-      <div class="col s1"><img class="card-img-top" src="static/images/ida.png" alt="" style="max-width: 170%;"></div>
-      <div class="col s1"><img class="card-img-top" src="static/images/bayern.png" alt="" style="max-width: 170%;"></div>
-      <div class="col s1"><img class="card-img-top" src="static/images/beardbw.jpg" alt="" style="max-width: 170%;"></div>
-      <div class="col s1"><img class="card-img-top" src="static/images/salma.jpg" alt="" style="max-width: 170%;"></div>
-      <div class="col s1"><img class="card-img-top" src="static/images/smile.jpg" alt="" style="max-width: 170%;"></div>
-  
-      <div class="col s1"><img class="card-img-top" src="static/images/sam.jpg" alt="" style="max-width: 170%;"></div>
-      <div class="col s1"></div>
-      <div class="col s1"></div>
-    </div>
-          
+  <body>
+ <nav>
+        <div class="nav-wrapper" style="background-color: teal;">
+            <ul class="left hide-on-med-and-down">
+                {% if session.user %}
+                <li><a href="{{ url_for('get_home') }}">Home</a></li>
+                <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                <li><a href="{{ url_for('get_reviews') }}">Comments</a></li>
+                <li><a href="{{ url_for('add_comment') }}">Your review</a></li>
+
+                {% else %}
+                <li><a href="{{ url_for('get_home') }}">Home</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+
+
+<img class="materialboxed" width="1250" src="static/images/back1.jpg">
   </body>
 
 
@@ -55,16 +46,14 @@
 
 
 <section>
-  <footer class="page-footer teal">
+  <footer class="page-footer teal" style="text-align: center;">
    
-          <h5 class="white-text">Site Mission</h5>
-          <p class="grey-text text-lighten-4">Our mission here at Cutz is to identify the best barbers in your area and make it easier for people to take
-               advantage of a database of the diverse barbers and styles in the region 
-               and make and update reviews about our featured ones. Feel free to suggest more as well by contacting our instagram page below</p>
+          <h5 class="white-text">Have you had a haircut lately? Then come and share!!</h5>
+          <p class="grey-text text-lighten-4"></p>
      <li class="list-inline-item">
                      <a target="_blank" href="https://www.instagram.com/">
                      <i class="fab fa-instagram-square" style="color: whitesmoke;"></i>
-                     <span class="sr-only">Instagram</span>
+                     <span style="color: ivory; text-shadow: lightgray;">Instagram</span>
                      </a>
                   </li>
     <div class="footer-copyright">
