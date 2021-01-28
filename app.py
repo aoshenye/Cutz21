@@ -168,6 +168,12 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/edit_review/<username>", methods=["GET", "POST"])
+def reviews(username):
+    username = mongo.db.users.find_one({"username": session["user"]})["username"]
+    return render_template("edit_review.html", reviews=reviews)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

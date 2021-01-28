@@ -12,8 +12,8 @@
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-
-
+<title>Home</title>
+</head>
   <body>
  <nav>
         <div class="nav-wrapper" style="background-color: teal;">
@@ -24,6 +24,8 @@
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 <li><a href="{{ url_for('get_reviews') }}">Reviews</a></li>
                 <li><a href="{{ url_for('add_review') }}">Your review</a></li>
+                
+
 
                 {% else %}
                 <li><a href="{{ url_for('get_home') }}">Home</a></li>

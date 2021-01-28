@@ -2,11 +2,15 @@
 {% block content %}
 
 <div class="container">
-    <h3 class="teal-text text-darken-4 center-align">Add your review</h3>
+    <h3 class="teal-text text-darken-4 center-align">Edit your review</h3>
     <br>
     <div class="row">
         <div class="col s12">
-            <form method="POST" action="{{ url_for('add_review') }}">
+   {% for reviews in reviews %}
+   { if reviews.comment == reviews.comment %}
+   <a href="{{url_for('edit_review', username=username._id)}}">Edit review</a>
+{% endfor %}
+            <form>
                 <label for="barber_name" class="required">Barber name</label>
                 <textarea name="barber_name" id="barber_name" rows="10" tabindex="4" required="required"></textarea>
 
@@ -22,8 +26,8 @@
                 <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
                 <input name="submit" type="submit" value="Submit" class="waves-effect waves-light btn">
 
-   <a href="{{url_for('edit_review', username=username._id)}}">Edit review</a>
-                
+                <a class="waves-effect waves-light btn" style="color: black;">Edit</a>
+                <a class="waves-effect waves-light btn" style="color: black;">Delete</a>
 
             </form>
         </div>
