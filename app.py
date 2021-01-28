@@ -61,8 +61,8 @@ def contact():
     return render_template("reviews.html", categories=categories, reviews=reviews)
 
 
-@app.route("/add_comment", methods=["GET", "POST"])
-def add_comment():
+@app.route("/add_review", methods=["GET", "POST"])
+def add_review():
     """ 
     To post scomment of text in form(revicommentsubmitted)
     """
@@ -82,7 +82,7 @@ def add_comment():
             return redirect(url_for("get_reviews"))
 
         # get request
-        return render_template("add_comment.html")
+        return render_template("add_review.html")
 
     flash("Register or log in", "warning")
     return redirect(url_for("register"))
