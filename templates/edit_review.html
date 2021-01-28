@@ -9,6 +9,7 @@
    {% for reviews in reviews %}
    { if reviews.comment == reviews.comment %}
    <a href="{{url_for('edit_review', username=username._id)}}">Edit review</a>
+   
 {% endfor %}
             <form>
                 <label for="barber_name" class="required">Barber name</label>
