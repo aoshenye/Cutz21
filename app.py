@@ -155,9 +155,10 @@ def profile(username):
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
-
+        reviews = mongo.db.reviews.find({"author": username})
+        return render_template("profile.html", username=username, reviews=reviews)
     return redirect(url_for("login"))
+
 
 
 @app.route("/logout")
@@ -169,8 +170,8 @@ def logout():
 
 
 @app.route("/edit_review/<username>", methods=["GET", "POST"])
-def reviews(username):
-    username = mongo.db.users.find_one({"username": session["user"]})["username"]
+def edit_review(username):
+    reviews = mongo.db.reviews.find({"author": username})
     return render_template("edit_review.html", reviews=reviews)
 
 

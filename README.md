@@ -50,3 +50,4 @@ removing styling extras in order to find out why the image cards we re pushed to
 
 testing which url for would be applicable to render template for the form once texts in text box have been submitted.
 Testing nav bar- not showing when screen size reduced. removed materialize UL class of mid hidden and now nav bar showing when screen reduced 
+problems with identifying appropriate value for code to create a edit functionalty for comments submitted by user.
