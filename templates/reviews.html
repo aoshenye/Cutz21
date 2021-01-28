@@ -22,13 +22,15 @@
                 <li><a href="{{ url_for('get_home') }}">Home</a></li>
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                <li><a href="{{ url_for('get_reviews') }}">Comments</a></li>
+                <li><a href="{{ url_for('get_reviews') }}">Reviews</a></li>
                 <li><a href="{{ url_for('add_comment') }}">Your review</a></li>
 
                 {% else %}
                 <li><a href="{{ url_for('get_home') }}">Home</a></li>
                 <li><a href="{{ url_for('login') }}">Login</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
+                <li><a href="{{ url_for('get_reviews') }}">Reviews</a></li>
+
                 {% endif %}
 
             </ul>
@@ -36,14 +38,8 @@
     </nav>
 
 
-<img class="materialboxed" width="1250" src="static/images/back1.jpg">
+<img width="1250" src="static/images/back1.jpg">
   </body>
-
-
-
-      
-
-
 
 <section>
   <footer class="page-footer teal" style="text-align: center;">
