@@ -5,17 +5,13 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+
 if os.path.exists("env.py"):
     import env
-
-
 app = Flask(__name__)
-
-app.config["MONGO_DBNAME"] = os.environ. get("MONGO_DBNAME")
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
-
-
 mongo = PyMongo(app)
 
 """
@@ -63,7 +59,7 @@ def contact():
 
 @app.route("/add_review", methods=["GET", "POST"])
 def add_review():
-    """ 
+    """
     To post scomment of text in form(revicommentsubmitted)
     """
     if is_logged_in():
@@ -90,8 +86,11 @@ def add_review():
 
 @app.route("/get_reviews")
 def get_reviews():
-    reviews = list(mongo.db.reviews.find())
-    return render_template("comments.html", reviews=reviews)
+    if is_logged_in():
+        reviews = list(mongo.db.reviews.find())
+        return render_template("comments.html", reviews=reviews)
+    else:
+        return redirect(url_for("login"))
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -156,9 +155,8 @@ def profile():
 
     if session["user"]:
         reviews = mongo.db.reviews.find({"author": username})
-    return render_template("profile.html", review=reviews)
+        return render_template("profile.html", review=reviews)
     return redirect(url_for("login"))
-
 
 
 @app.route("/logout")
@@ -168,16 +166,40 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
+@app.route("/delete_review", methods=["GET"])
+def delete_review():
+    if is_logged_in():
+        rev = request.args.get('rev')
+        result = mongo.db.reviews.delete_one({'_id': ObjectId(rev)})
+        print(result)
+        return redirect(url_for('profile'))
+
+    return redirect(url_for("login"))
 
 @app.route("/edit_review", methods=["GET", "POST"])
 def edit_review():
-    # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    if is_logged_in():
+        if request.method == "POST":
+            print("This is post")
+            review_data = {
+                "$set": {
+                    'comment': request.form['comment'],
+                    'date_of_cut': request.form['date_of_cut']
+                }
+            }
+            id = request.form['review_id']
+            mongo.db.reviews.update_one({'_id': ObjectId(id)}, review_data)
+            return redirect(url_for("profile"))
 
-    if session["user"]:
-        reviews = mongo.db.reviews.find({"author"})
-        return render_template("edit_review.html", get_reviews=reviews)
+        else:
+            rev = request.args.get('rev')
+            if session["user"]:
+                reviews = mongo.db.reviews.find_one({"_id": ObjectId(rev)})
+                print(rev)
+                return render_template("edit_review.html", get_reviews=reviews)
+
+    return redirect(url_for("login"))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

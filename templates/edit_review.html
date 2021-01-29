@@ -2,21 +2,28 @@
 {% block content %}
 
 
-<div id="respond">
+    <div id="respond">
+        <div class="container">
+            <h3 class="center-align">Edit review</h3>
 
-<h3 class="center-align">Edit review</h3>
-   {% for reviews in reviews %}
-   {% if reviews.comment == reviews.comment %}
-<h4 class="text" style="text-align: center; margin-bottom: 10%;">{{ username }}'s Profile</h4>   
-                <a href="{{ url_for('edit_review', review=reviews._id) }}"></a>
-
-   {% endif %}
-{% endfor %}
-            <div>
-                    <a href="" class="btn-small green accent-4">Done</a>
-                    <a href="" class="btn-small light-blue lighten-1">Edit</a>
+            <div class="row">
+                <div class="col s12">
+                    <form method="POST" action="{{ url_for('edit_review') }}">
+                        <label for="comment" class="required">Your current reviews</label>
+                        <textarea name="comment" id="comment" rows="10" tabindex="4" required="required" minlength="5"
+                                  maxlength="200">
+                            {{ get_reviews.comment }}
+                        </textarea>
+                        <label for="date_of_cut">Date:</label>
+                        <input type="date" id="date_of_cut" name="date_of_cut" value="{{ get_reviews.date_of_cut }}">
+                        <input type="hidden" name="review_id" value="{{ get_reviews._id }}"/>
+                        <input name="submit" type="submit" value="Done" class="btn-small green accent-4">
+                        <a href="{{ url_for('profile') }}" class="btn-small light-blue lighten-1">Cancel</a>
+                    </form>
                 </div>
-</div>
+            </div>
+        </div>
+    </div>
 
-  
+
 {% endblock %}

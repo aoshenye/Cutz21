@@ -1,26 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
+    <div id="respond">
+        <div class="container">
+            <h3 class="center-align">Welcome {{ session["user"] }}!</h3>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>comment</th>
+                        <th>Date</th>
+                        <th>action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for rev in review %}
+                        <tr>
+                            <td>{{ rev.comment }}</td>
+                            <td>{{ rev.date_of_cut }}</td>
+                            <td>
+                                <a class="btn btn-sm" href="{{ url_for('edit_review',  rev=rev._id) }}"><i class="fa fa-edit"></i></a> &nbsp;
+                                <a class="btn btn-sm btn-danger" href="{{ url_for('delete_review',rev = rev._id) }}" style="background-color: #d9534f"><i
+                                        class="fa fa-remove"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-
-<div id="respond">
-
-<h3 class="center-align">Welcome Back</h3>
-   {% for reviews in reviews %}
-   {% if reviews.comment == reviews.comment %}
-<h4 class="text" style="text-align: center; margin-bottom: 10%;">{{ username }}'s Profile</h4>   
-            <div>
-                    <a href="" class="btn-small green accent-4">Done</a>
-                    <a href="{{ url_for('edit_review',  review=review._id) }}" class="btn-small light-blue lighten-1">Edit</a>
-                </div>
-
-   {% endif %}
-{% endfor %}
-
-
-<p class="typeinfo" style="text-align: center; size: 20px;">
-            Now that you are logged in, click on Reviews to see other user's feedback. 
-            Click on Your Review to leave your feedback.</p>
-</div>
-
-  
+    </div>
 {% endblock %}
