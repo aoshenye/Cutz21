@@ -12,7 +12,19 @@ body {
 }
 .fa fa-instagram{
     padding-bottom: 15px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 13px;
+    line-height: 7px;
+    text-align: center;
+    color: #555B6E;
+    background-color: #FFD6BA;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out
 }
+
 .nav {
     display: block;
 }
