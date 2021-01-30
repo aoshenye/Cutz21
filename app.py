@@ -14,20 +14,6 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
-"""
-Design wise, improvement to the overall user experience and navigation
-    - Comments page can be public
-Display comments done by user on their profile
-    - They can press on edit/delete on any comment
-    - This will redirect them to an edit comment page
-Make sure that people who didn't write the comment cannot edit it as well (check the username of the comment and the user logged in, if logged in)
-Comments displayed can be nicer in terms of design
-You can also have an image (file/url) of the barber saved in the db
-Clean up the db
-Add proper function comments throughout and function documentation
-It would be beneficial if you used the contact form you have in forms.py and add an endpoint to handle a "dummy" send email.
-README file
-"""
 
 
 def is_logged_in():
