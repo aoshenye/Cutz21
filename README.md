@@ -44,10 +44,3 @@ We continually tweak and adjust this template to help give you the best experien
 
 Happy coding!
 
-setting up if statement so it would equal one tab issues
-
-removing styling extras in order to find out why the image cards we re pushed to the right
-
-testing which url for would be applicable to render template for the form once texts in text box have been submitted.
-Testing nav bar- not showing when screen size reduced. removed materialize UL class of mid hidden and now nav bar showing when screen reduced 
-problems with identifying appropriate value for code to create a edit functionalty for comments submitted by user.
