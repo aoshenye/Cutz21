@@ -56,6 +56,11 @@ This section is also where you would share links to any wireframes, mockups, dia
 	4. go to profile page and ensure user can see user individual  reviews. 
 4. Nav bar - ensure Navigation bar renders when screen size altered. 
 		1. open page and altered screen size to make it smaller. Nav bar was missing. Altered the page size and nav bar size and background image size to render navigation bar effectively.  
+5. Mobile view - "Your reviews" page not showing on mobile view navigation bar. 
+	1. Open webpage on mobile
+	2. Log in
+	3. check if "Your reviews" can be seen on the navigation bar
+	4. Your reviews showing on navigation bar
 5. The website was tested on the following browsers using a Microsoft Surface Laptop on Windows 10.
 
 - Google Chrome - Version 86.0.4240.183 (Official Build) (64-bit)
