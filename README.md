@@ -27,14 +27,6 @@ This section is also where you would share links to any wireframes, mockups, dia
 - Buttons: initialized from Materialize 
 
 - In the future, it would be good to add a "forgotten password" section. 
-## Structure
-
-diagram
-
-
-
-
-
 
 ## Technologies Used
 
@@ -101,6 +93,7 @@ diagram
 
 - Photos were taken from my own library of photos.   
 - Materialize used for layout and design of website Particularly the home page is inspired by example themes by [Materialize](https://materializecss.com/Z)
+- Wireframes were created with [lucid.app](lucid.appZ])
 
 ### Media
 
