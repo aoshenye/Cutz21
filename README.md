@@ -70,22 +70,46 @@ This section is also where you would share links to any wireframes, mockups, dia
 
 	- Google pixel 3a using Google Chrome on Android 10 iphone xr using Safari on IOS 13.4.1 
 ## Deployment
-1.  login to heroku
-2.  Create heroku app
-3.  Add heroku with repository by typing in terminal: heroku git: remote -a cdins-msp3-recipe-book
-4.  Create requirements.txt file by typing in terminal 'pip3 freeze > requirements.txt'
-5.  Create Procfile by typing in terminal: 'web: python3 app. py > Procfile'
-6.  Add and push created files to repository by commands: 'git add', 'git commit', 'git push' for github and 'git push heroku master' for heroku.
+[Cutz](https://github.com/aoshenye/Cutz21)
+
+
 ### For Deployment 
-	1. Link git hub repository to Heroku
-			-click Deploy
-			- got to App connected to GitHub
-			- find my github page
-			- click connect and ensure connection  made. 
-			- scroll down to Automatic Deploys
-			- In the choose a branch to deploy section, click Master
-			- scroll down to Manual deploy and click Deploy Branch.
-			- Wait a few seconds for deployment.   
+I use github to store repository remotely.  Pages deployed on heroku service. To do this, follow these steps:
+
+1. Create reopsitory on github.
+2. Clone repository from github to local machine via terminal
+3. Create files by command 'git add', then commit by command 'git commit' and push to github repository by typing 'git push' in terminal.
+4. Create app. py file with flask logic to display "Hello World" in web browser.
+5. login to heroku in VSCode terminal.
+6. Create heroku application.
+7. go to App connected to GitHub
+8. find my github page
+9.  click connect and ensure connection  made. 
+10. scroll down to Automatic Deploys
+11. In the choose a branch to deploy section, click Master
+12. scroll down to Manual deploy and click Deploy Branch.
+13. Wait a few seconds for deployment.   
+14. Create requirements.txt file by typing in terminal 'pip3 freeze > requirements.txt'
+15. Create Procfile by typing in terminal: 'web: python3 app. py > Procfile'
+16. Add and push created files to repository by commands: 'git add', 'git commit', 'git push' for github and 'git push heroku master' for heroku.
+17. Repeat step 11 after all changes maken in code.
+
+	
+1. Heroku Deployment - Link git hub repository to Heroku
+		
+To run this project locally, follow below steps:
+Open my Github Repository [Cutz](https://github.com/aoshenye/Cutz21)
+Click on green Code button to clone or download repository.
+If you clone repository then copy link.
+Open bash terminal and move to the directory to which you want clone repository.
+Type 'git clone' and paste the copied link.
+In main Repository folder create env. py file.
+Add below configuration variables to the env. py file:
+os.environ["MONGO_URI"]= "place here your Mongo DB URI" - needed for manipulating database
+os.environ['SECRET_KEY']= "place here your SECRET KEY" - needed for forms in webpage
+In app. py file set below variables:
+app.config["MONGO_DBNAME"] = 'name_of_collection' - type name of database collection where the customer reviews are stored.
+
 
 ## Credits
 
@@ -94,6 +118,7 @@ This section is also where you would share links to any wireframes, mockups, dia
 - Photos were taken from my own library of photos.   
 - Materialize used for layout and design of website Particularly the home page is inspired by example themes by [Materialize](https://materializecss.com/Z)
 - Wireframes were created with [lucid.app](lucid.appZ])
+- [werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/utils/) used for password security/hashing. 
 
 ### Media
 
