@@ -76,7 +76,7 @@ This section is also where you would share links to any wireframes, mockups, dia
 	- Google pixel 3a using Google Chrome on Android 10 iphone xr using Safari on IOS 13.4.1 
 ## Deployment
 [Cutz](https://github.com/aoshenye/Cutz21)
-
+[Heroku Deployment](https://barbers-reviews.herokuapp.com/)
 
 ### For Deployment 
 I use github to store repository remotely.  Pages deployed on heroku service. To do this, follow these steps:
