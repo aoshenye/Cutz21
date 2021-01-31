@@ -3,28 +3,26 @@
 }
 
 body {
-  background-color: white;
-  font-family: 'Open Sans', sans-serif;
+    background-color: white;
+    font-family: 'Open Sans', sans-serif;
 }
+
 .typeinfo {
     text-shadow: 9cm;
-    color:argb(26, 77, 72);
+    color: argb(26, 77, 72);
 }
-.fa fa-instagram{
+
+.fa fa-instagram {
     padding-bottom: 15px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    font-size: 13px;
-    line-height: 7px;
-    text-align: center;
-    color: #555B6E;
-    background-color: #FFD6BA;
-    -moz-transition: all 0.35s ease-in-out;
-    -webkit-transition: all 0.35s ease-in-out;
-    -o-transition: all 0.35s ease-in-out
 }
 
 .nav {
     display: block;
+}
+
+
+@media only screen and (max-width: 413px) {
+    .header-nav {
+        height: 112px;
+    }
 }
