@@ -122,8 +122,9 @@ app.config["MONGO_DBNAME"] = 'name_of_collection' - type name of database collec
 
 - Photos were taken from my own library of photos.   
 - Materialize used for layout and design of website Particularly the home page is inspired by example themes by [Materialize](https://materializecss.com/Z)
-- Wireframes were created with [lucid.app](lucid.appZ])
+- Wireframes and mobile blockframe were created with [lucid.app](lucid.appZ])
 - [werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/utils/) used for password security/hashing. 
+- Mockups provided by [Smartmockups](https://smartmockups.com/)
 
 ### Media
 
@@ -135,3 +136,4 @@ app.config["MONGO_DBNAME"] = 'name_of_collection' - type name of database collec
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTUzOTgzODU5MV19
 -->
+
